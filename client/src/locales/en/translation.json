@@ -1745,5 +1745,9 @@
   "com_ui_zoom_in": "Zoom in",
   "com_ui_zoom_level": "Zoom level",
   "com_ui_zoom_out": "Zoom out",
+  "com_ui_landing_title": "Your AI workspace now starts with a public front door",
+  "com_ui_landing_description": "The public landing experience is shown before authentication, while the full workspace now lives under /ai so your app shell can grow independently.",
+  "com_ui_landing_login": "Sign in",
+  "com_ui_landing_open_workspace": "Open workspace",
   "com_user_message": "You"
 }
