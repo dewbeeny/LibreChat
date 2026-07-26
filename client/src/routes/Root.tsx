@@ -10,6 +10,7 @@ import {
   useFileMap,
 } from '~/hooks';
 import store from '~/store';
+import useAuthRedirect from './useAuthRedirect';
 import {
   PromptGroupsProvider,
   AssistantsMapContext,
@@ -29,6 +30,7 @@ export default function Root() {
   const sidebarExpanded = useRecoilValue(store.sidebarExpanded);
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
+  useAuthRedirect();
   const { isAuthenticated, logout } = useAuthContext();
 
   useHealthCheck(isAuthenticated);

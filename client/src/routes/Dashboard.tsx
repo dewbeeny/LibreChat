@@ -3,7 +3,7 @@ import DashboardRoute from './Layouts/Dashboard';
 
 function PromptsRedirect() {
   const { '*': splat } = useParams();
-  const target = splat ? `/prompts/${splat}` : '/prompts/new';
+  const target = splat ? `/ai/prompts/${splat}` : '/ai/prompts/new';
   return <Navigate to={target} replace={true} />;
 }
 
@@ -17,7 +17,7 @@ const dashboardRoutes = {
     },
     {
       path: '*',
-      element: <Navigate to="/c/new" replace={true} />,
+      element: <Navigate to="/ai/c/new" replace={true} />,
     },
   ],
 };

@@ -50,7 +50,7 @@ const createTestRouter = (initialEntry: string, isAuthenticated: boolean) =>
         children: [{ index: true, element: <ChildRoute /> }],
       },
       {
-        path: '/c/new',
+        path: '/ai/c/new',
         element: <NewConversation />,
       },
     ],
@@ -67,18 +67,18 @@ describe('StartupLayout — redirect race condition', () => {
     jest.restoreAllMocks();
   });
 
-  it('navigates to /c/new when authenticated with no pending redirect', async () => {
+  it('navigates to /ai/c/new when authenticated with no pending redirect', async () => {
     window.history.replaceState({}, '', '/login');
 
     const router = createTestRouter('/login', true);
     render(<RouterProvider router={router} />);
 
     await waitFor(() => {
-      expect(router.state.location.pathname).toBe('/c/new');
+      expect(router.state.location.pathname).toBe('/ai/c/new');
     });
   });
 
-  it('does NOT navigate to /c/new when redirect_to URL param is present', async () => {
+  it('does NOT navigate to /ai/c/new when redirect_to URL param is present', async () => {
     window.history.replaceState({}, '', '/login?redirect_to=%2Fc%2Fabc123');
 
     const router = createTestRouter('/login?redirect_to=%2Fc%2Fabc123', true);
@@ -89,7 +89,7 @@ describe('StartupLayout — redirect race condition', () => {
     expect(router.state.location.pathname).toBe('/login');
   });
 
-  it('does NOT navigate to /c/new when sessionStorage redirect is present', async () => {
+  it('does NOT navigate to /ai/c/new when sessionStorage redirect is present', async () => {
     window.history.replaceState({}, '', '/login');
     sessionStorage.setItem(SESSION_KEY, '/c/abc123');
 

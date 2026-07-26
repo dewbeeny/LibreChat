@@ -21,6 +21,8 @@ import ShareRoute from './ShareRoute';
 import ChatRoute from './ChatRoute';
 import Search from './Search';
 import Root from './Root';
+import LandingRoute from './LandingRoute';
+import LegacyRouteRedirect from './LegacyRouteRedirect';
 
 const AuthLayout = () => (
   <AuthContextProvider>
@@ -67,6 +69,11 @@ export const router = createBrowserRouter(
     },
     {
       path: '/',
+      element: <LandingRoute />,
+      errorElement: <RouteErrorBoundary />,
+    },
+    {
+      path: '/',
       element: <StartupLayout />,
       errorElement: <RouteErrorBoundary />,
       children: [
@@ -109,12 +116,44 @@ export const router = createBrowserRouter(
         },
         dashboardRoutes,
         {
-          path: '/',
+          path: 'c/*',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'prompts',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'prompts/*',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'skills',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'skills/*',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'agents',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'agents/*',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: 'search',
+          element: <LegacyRouteRedirect />,
+        },
+        {
+          path: '/ai',
           element: <Root />,
           children: [
             {
               index: true,
-              element: <Navigate to="/c/new" replace={true} />,
+              element: <Navigate to="/ai/c/new" replace={true} />,
             },
             {
               path: 'c/:conversationId?',
@@ -126,7 +165,7 @@ export const router = createBrowserRouter(
             },
             {
               path: 'prompts',
-              element: <Navigate to="/prompts/new" replace={true} />,
+              element: <Navigate to="/ai/prompts/new" replace={true} />,
             },
             {
               path: 'prompts/new',
